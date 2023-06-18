@@ -1,7 +1,9 @@
+import "./style.css";
+
 const refs = {
     form: document.querySelector('#form'),
     input: document.querySelector('#search'),
-    container: document.querySelector('.container')
+    jsmarkup: document.querySelector('.jsmarkup')
 }
 
 const handlerSubmit = (e) => {
@@ -15,13 +17,13 @@ const handlerSubmit = (e) => {
 
 function createItem({ strDrinkThumb, strDrink, strInstructions }) {
     const article = `
-        <article>
+        <li>
             <img src="${strDrinkThumb}" 
             alt="${strDrink}">
             <p>${strInstructions}</p>
-        </article>`
+        </li>`
     
-    refs.container.insertAdjacentHTML("beforeend", article);
+    refs.jsmarkup.insertAdjacentHTML("beforeend", article);
 }
 
 function renderCollection(arr) {
