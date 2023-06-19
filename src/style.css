@@ -8,6 +8,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
 }
 
 .jsmarkup {
@@ -18,6 +19,7 @@ body {
     padding: 0;
     margin: 0;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 li {
@@ -62,5 +64,9 @@ P {
 
 .submit :hover {
     background-color: #0069d9;
+}
+
+ .load-more {
+    text-align: center;
 }
 
