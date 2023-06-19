@@ -58,17 +58,21 @@ const refs = {
     jsmarkup: document.querySelector('.jsmarkup')
 }
 
+let currentPage = 1;
+
 const gitHandlerSubmit = (e) => {
     e.preventDefault();
     const value = refs.input.value;
     
-    axios.get(`https://api.github.com/search/users?q=${value}&client_id=bc979564c898738507ac&client_secret=91ea2a149d384989e086b6bfd5e6132ac830005c`)
-    .then(response => {
-        renderCollection(response.data.items);
-        clearInput();
-    })
-    .catch(error => {
-        console.log(error);
+    axios.get(`https://api.github.com/search/users?q=${value}&client_id=bc979564c898738507ac&client_secret=91ea2a149d384989e086b6bfd5e6132ac830005c&page=${currentPage}`)
+        .then(response => {
+            renderGitCollection(response.data.items);
+            clearInput();
+        })
+        .theh(() => currentPage++)
+
+        .catch(error => {
+            console.log(error);
     });
 }
 
@@ -83,7 +87,7 @@ function createGitItem({ avatar_url, login }) {
     refs.jsmarkup.appendChild(li);
 }
 
-function renderCollection(arr) {
+function renderGitCollection(arr) {
     refs.jsmarkup.innerHTML = ''; // Очищаємо контейнер перед відображенням нових результатів
     arr.forEach(el => createGitItem(el));
 }
