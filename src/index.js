@@ -37,7 +37,6 @@ import axios from 'axios';
 //             <p>${strDrink}</p>
 //         </li>`
     
-//     // refs.jsmarkup.insertAdjacentHTML("beforeend", article);
 //     refs.jsmarkup.appendChild(li); //
 // }
 
