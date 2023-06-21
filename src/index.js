@@ -3,11 +3,60 @@ import axios from 'axios';
 import countriesHbs from "./template.hbs";
 import debounce from 'lodash.debounce';
 
-debounce(test, 2000)
+// const markup = countriesHbs();
+// refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
 
-function test() {
-    console.log('object')
+// debounce(test, 2000)
+
+// function test() {
+//     console.log('object')
+// }
+
+// !Пошук країн
+
+const refs = {
+    form: document.querySelector('#form'),
+    input: document.querySelector('#search'),
+    jsmarkup: document.querySelector('.jsmarkup')
 }
+
+// const markup = countriesHbs();
+// refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
+
+const handlerSubmit = (e) => {
+    e.preventDefault();
+    const value = refs.input.value;
+    
+    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+    .then(response => {
+        renderCollection(response.data.drinks);
+        clearInput();
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+// const markup = countriesHbs(response.data.drinks);
+// refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
+
+function createItem({ strDrinkThumb, strDrink }) {
+    const li = document.createElement('li'); //
+    li.innerHTML = this;
+    
+    refs.jsmarkup.appendChild(li); //
+}
+
+function renderCollection(arr) {
+    refs.jsmarkup.innerHTML = ''; // Очищаємо контейнер перед відображенням нових результатів
+    // arr.forEach(el =>  createItem(el));
+}
+
+function clearInput() {
+    refs.input.value = ''; // Очищаємо поле вводу
+}
+
+refs.form.addEventListener('submit', handlerSubmit);
 
 // !Пошук коктейлів
 
