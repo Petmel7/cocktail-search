@@ -1,5 +1,13 @@
 import "./style.css";
 import axios from 'axios';
+import countriesHbs from "./template.hbs";
+import debounce from 'lodash.debounce';
+
+debounce(test, 2000)
+
+function test() {
+    console.log('object')
+}
 
 // !Пошук коктейлів
 
@@ -53,46 +61,46 @@ import axios from 'axios';
 
 // !Пошук юзерів на GitHub та пагінація
 
-const refs = {
-    form: document.querySelector('#form'),
-    input: document.querySelector('#search'),
-    jsmarkup: document.querySelector('.jsmarkup'),
-    more: document.querySelector('#more')
-}
+// const refs = {
+//     form: document.querySelector('#form'),
+//     input: document.querySelector('#search'),
+//     jsmarkup: document.querySelector('.jsmarkup'),
+//     more: document.querySelector('#more')
+// }
 
-let currentPage = 1;
+// let currentPage = 1;
 
-const gitHandlerSubmit = (e) => {
-    e.preventDefault();
-    const value = refs.input.value;
+// const gitHandlerSubmit = (e) => {
+//     e.preventDefault();
+//     const value = refs.input.value;
     
-    axios.get(`https://api.github.com/search/users?q=${value}&client_id=bc979564c898738507ac&client_secret=91ea2a149d384989e086b6bfd5e6132ac830005c&page=${currentPage}`)
-        .then(response => {
-            renderGitCollection(response.data.items);
-        })
-        .then(() => currentPage++)
+//     axios.get(`https://api.github.com/search/users?q=${value}&client_id=bc979564c898738507ac&client_secret=91ea2a149d384989e086b6bfd5e6132ac830005c&page=${currentPage}`)
+//         .then(response => {
+//             renderGitCollection(response.data.items);
+//         })
+//         .then(() => currentPage++)
 
-        .catch(error => {
-            console.log(error);
-    });
-}
+//         .catch(error => {
+//             console.log(error);
+//     });
+// }
 
-function createGitItem({ avatar_url, login }) {
+// function createGitItem({ avatar_url, login }) {
     
-    const article =`
-    <li>
-        <img src="${avatar_url}"
-        alt="${login}">
-        <p>${login}</p>
-    </li>
-    `;
+//     const article =`
+//     <li>
+//         <img src="${avatar_url}"
+//         alt="${login}">
+//         <p>${login}</p>
+//     </li>
+//     `;
     
-    refs.jsmarkup.insertAdjacentHTML("beforeend", article);
-}
+//     refs.jsmarkup.insertAdjacentHTML("beforeend", article);
+// }
 
-function renderGitCollection(arr) {
-    arr.forEach(el => createGitItem(el));
-}
+// function renderGitCollection(arr) {
+//     arr.forEach(el => createGitItem(el));
+// }
 
-refs.form.addEventListener('submit', gitHandlerSubmit);
-refs.more.addEventListener('click', gitHandlerSubmit);
+// refs.form.addEventListener('submit', gitHandlerSubmit);
+// refs.more.addEventListener('click', gitHandlerSubmit);

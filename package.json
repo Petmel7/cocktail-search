@@ -16,6 +16,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.3",
+    "lodash.debounce": "^4.0.8",
     "nanoid": "^4.0.2",
     "webpack-cli": "^5.1.0"
   },
