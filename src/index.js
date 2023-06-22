@@ -1,62 +1,49 @@
-import "./style.css";
-import axios from 'axios';
-import countriesHbs from "./template.hbs";
-import debounce from 'lodash.debounce';
+// import "./style.css";
+// import axios from 'axios';
+// import countriesHbs from "./template.hbs";
+// import debounce from 'lodash.debounce';
 
-// const markup = countriesHbs();
-// refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
+// // !Пошук країн
 
-// debounce(test, 2000)
-
-// function test() {
-//     console.log('object')
+// const refs = {
+//     form: document.querySelector('#form'),
+//     input: document.querySelector('#search'),
+//     jsmarkup: document.querySelector('.jsmarkup')
 // }
 
-// !Пошук країн
-
-const refs = {
-    form: document.querySelector('#form'),
-    input: document.querySelector('#search'),
-    jsmarkup: document.querySelector('.jsmarkup')
-}
-
-// const markup = countriesHbs();
-// refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
-
-const handlerSubmit = (e) => {
-    e.preventDefault();
-    const value = refs.input.value;
+// const handlerSubmit = (e) => {
+//     e.preventDefault();
+//     const value = refs.input.value;
     
-    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
-    .then(response => {
-        renderCollection(response.data.drinks);
-        clearInput();
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}
+//     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+//     .then(response => {
+//         renderCollection(response.data.drinks);
+//         clearInput();
+//     })
+//     .catch(error => {
+//         console.log(error);
+//     });
+// }
 
-// const markup = countriesHbs(response.data.drinks);
-// refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
-
-function createItem({ strDrinkThumb, strDrink }) {
-    const li = document.createElement('li'); //
-    li.innerHTML = this;
+// // function createItem({ strDrinkThumb, strDrink }) {
+// //     const li = document.createElement('li'); //
+// //     li.innerHTML = '';
     
-    refs.jsmarkup.appendChild(li); //
-}
+// //     refs.jsmarkup.appendChild(li); //
+// // }
 
-function renderCollection(arr) {
-    refs.jsmarkup.innerHTML = ''; // Очищаємо контейнер перед відображенням нових результатів
-    // arr.forEach(el =>  createItem(el));
-}
+// function renderCollection(arr) {
+//     refs.jsmarkup.innerHTML = ''; // Очищаємо контейнер перед відображенням нових результатів
 
-function clearInput() {
-    refs.input.value = ''; // Очищаємо поле вводу
-}
+//         const markup = countriesHbs(this);
+//         refs.jsmarkup.insertAdjacentHTML('beforeend', markup);
+// }
 
-refs.form.addEventListener('submit', handlerSubmit);
+// function clearInput() {
+//     refs.input.value = ''; // Очищаємо поле вводу
+// }
+
+// refs.form.addEventListener('submit', handlerSubmit);
 
 // !Пошук коктейлів
 
@@ -153,3 +140,70 @@ refs.form.addEventListener('submit', handlerSubmit);
 
 // refs.form.addEventListener('submit', gitHandlerSubmit);
 // refs.more.addEventListener('click', gitHandlerSubmit);
+
+
+
+
+
+
+// const markup = countriesHbs(response.data.drinks);
+// refs.jsmarkup.insertAdjacentHTML("beforeend", markup);
+
+
+// debounce(test, 2000)
+
+// function test() {
+//     console.log('object')
+// }
+
+
+
+
+
+import "./style.css";
+import axios from 'axios';
+import countriesHbs from "./template.hbs";
+import debounce from 'lodash.debounce';
+
+// Пошук країн
+
+const refs = {
+    form: document.querySelector('#form'),
+    input: document.querySelector('#search'),
+    jsmarkup: document.querySelector('.jsmarkup')
+}
+
+const handlerSubmit = (e) => {
+    e.preventDefault();
+    const value = refs.input.value;
+    
+    axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+    .then(response => {
+        renderCollection(response.data.drinks);
+        clearInput();
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+// const markup = countriesHbs();
+// refs.jsmarkup.insertAdjacentHTML('beforeend', markup);
+
+function renderCollection(arr) {
+    // refs.jsmarkup.innerHTML = ''; // Очищаємо контейнер перед відображенням нових результатів
+    
+    // arr.forEach(item => {
+    //     const markup = countriesHbs(item);
+    //     refs.jsmarkup.insertAdjacentHTML('beforeend', markup);
+    // });
+
+    const markup = countriesHbs(drinks);
+    refs.jsmarkup.insertAdjacentHTML('beforeend', markup);
+}
+
+function clearInput() {
+    refs.input.value = ''; // Очищаємо поле вводу
+}
+
+refs.form.addEventListener('submit', handlerSubmit);
