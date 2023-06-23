@@ -15,7 +15,7 @@ const handlerSubmit = (e) => {
     e.preventDefault();
     const value = refs.input.value;
 
-    axios.get(`https://restcountries.com/v3.1/all?fields=name,flags${value}`)
+    axios.get(`https://restcountries.com/v3.1/independent?flags,status,languages,capital${value}`)
         .then(response => {
             renderCollection(response.data.name)
             // console.log(response);
