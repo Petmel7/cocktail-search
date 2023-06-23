@@ -16,8 +16,9 @@ const handlerSubmit = (e) => {
     const value = refs.input.value;
 
     axios.get(`https://restcountries.com/v3.1/all?fields=name,flags${value}`)
-    .then(response => {
-        console.log(response);
+        .then(response => {
+            renderCollection(response.data.name)
+            // console.log(response);
 
         clearInput();
     })
@@ -26,10 +27,10 @@ const handlerSubmit = (e) => {
     });
 }
 
-function renderCollection(drinks) {
+function renderCollection(name) {
     refs.jsmarkup.innerHTML = ''; // Очищаємо контейнер перед відображенням нових результатів
 
-    const markup = countriesHbs(drinks);
+    const markup = countriesHbs(name);
     refs.jsmarkup.insertAdjacentHTML('beforeend', markup);
 }
 
