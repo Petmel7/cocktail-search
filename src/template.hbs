@@ -1,11 +1,12 @@
 {{!-- Пошук країн --}}
 
-{{#each this}}
+{{!-- {{#each this}}
 <li>
-    <img src="{{this.coatOfArms}}" alt="{{this.capital}}">
+    <img src="{{this.coatOfArms}}" 
+    alt="{{this.capital}}">
     <p>{{this.capital}}</p>
 </li>
-{{/each}}
+{{/each}} --}}
 
 {{!-- Пошук коктейлів --}}
 
@@ -16,3 +17,72 @@
         <p>{{this.strDrink}}</p>
     </li>
 {{/each}} --}}
+
+
+{{!-- {{#each this}}
+<li>
+    <p>Країна: {{this.name.common}}</p>
+    <p>Столиця: {{this.capital.[0]}}</p>
+</li>
+{{/each}} --}}
+
+
+
+
+
+
+{{!-- {{#each this}}
+<li>
+    <h3>{{name.common}}</h3>
+    <p>Capital: {{capital.[0]}}</p>
+    <p>Population: {{population}}</p>
+    <p>Languages:
+        {{#each languages}}
+        {{this}},
+        {{/each}}
+    </p>
+    <img src="{{flags.svg}}" alt="Flag of {{name.common}}">
+</li>
+{{/each}} --}}
+
+
+
+
+{{!-- {{#each this}}
+<li style="background-image: url('{{flags.svg}}');">
+    <h3>{{name.common}}</h3>
+    <p>Capital: {{capital.[0]}}</p>
+    <p>Population: {{population}}</p>
+    <p>Languages:
+        {{#each languages}}
+        {{this}},
+        {{/each}}
+    </p>
+</li>
+{{/each}} --}}
+
+
+
+{{!-- {{#each this}}
+<li>
+    <h3>{{name.common}}</h3>
+    <p>Capital: {{capital.[0]}}</p>
+    <p>Population: {{population}}</p>
+    <p>Languages: {{#each languages}}{{this}}, {{/each}}</p>
+    <img src="{{flags.png}}" alt="Flag">
+</li>
+{{/each}} --}}
+
+{{#each this}}
+<li>
+    <h3>{{name.common}}</h3>
+    <p>Capital: {{capital.[0]}}</p>
+    <p>Population: {{population}}</p>
+    <p>Languages:
+        {{#each languages}}
+        {{this}},
+        {{/each}}
+    </p>
+    <img src="{{flags.png}}" alt="Flag">
+</li>
+{{/each}}

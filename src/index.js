@@ -1,44 +1,44 @@
-import "./style.css";
-import axios from 'axios';
-import countriesHbs from "./template.hbs";
-import debounce from 'lodash.debounce';
+// import "./style.css";
+// import axios from 'axios';
+// import countriesHbs from "./template.hbs";
+// import debounce from 'lodash.debounce';
 
 //!Пошук країн
 
-const refs = {
-    form: document.querySelector('#form'),
-    input: document.querySelector('#search'),
-    jsmarkup: document.querySelector('.jsmarkup')
-}
+// const refs = {
+//     form: document.querySelector('#form'),
+//     input: document.querySelector('#search'),
+//     jsmarkup: document.querySelector('.jsmarkup')
+// }
 
-const handlerSubmit = (e) => {
-    e.preventDefault();
-    const value = refs.input.value;
+// const handlerSubmit = (e) => {
+//     e.preventDefault();
+//     const value = refs.input.value;
 
-    axios.get(`https://restcountries.com/v3.1/independent?flags,status,languages,capital${value}`)
-        .then(response => {
-            renderCollection(response.data.name)
-            // console.log(response);
+//     axios.get(`https://restcountries.com/v3.1/independent?name,flags,status,languages,capital${value}`)
+//         .then(response => {
+//             renderCollection(response.data.name)
+//             // console.log(response);
 
-        clearInput();
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}
+//         clearInput();
+//     })
+//     .catch(error => {
+//         console.log(error);
+//     });
+// }
 
-function renderCollection(name) {
-    refs.jsmarkup.innerHTML = ''; // Очищаємо контейнер перед відображенням нових результатів
+// function renderCollection(name) {
+//     refs.jsmarkup.innerHTML = ''; // Очищаємо контейнер перед відображенням нових результатів
 
-    const markup = countriesHbs(name);
-    refs.jsmarkup.insertAdjacentHTML('beforeend', markup);
-}
+//     const markup = countriesHbs(name);
+//     refs.jsmarkup.insertAdjacentHTML('beforeend', markup);
+// }
 
-function clearInput() {
-    refs.input.value = ''; // Очищаємо поле вводу
-}
+// function clearInput() {
+//     refs.input.value = ''; // Очищаємо поле вводу
+// }
 
-refs.form.addEventListener('submit', handlerSubmit);
+// refs.form.addEventListener('submit', handlerSubmit);
 
 // !Пошук коктейлів
 
@@ -186,3 +186,47 @@ refs.form.addEventListener('submit', handlerSubmit);
 // }
 
 // refs.form.addEventListener('submit', handlerSubmit);
+
+
+
+
+// !Gpt
+
+import "./style.css";
+import axios from 'axios';
+import countriesHbs from "./template.hbs";
+import debounce from 'lodash.debounce';
+
+const refs = {
+    form: document.querySelector('#form'),
+    input: document.querySelector('#search'),
+    jsMarkup: document.querySelector('.jsmarkup')
+}
+
+const handlerSubmit = (e) => {
+    e.preventDefault();
+    const value = refs.input.value;
+
+    axios.get(`https://restcountries.com/v3.1/name/${value}?fields=name,capital,population,languages`)
+        .then(response => {
+            renderCollection(response.data)
+            clearInput();
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+function renderCollection(data) {
+    refs.jsMarkup.innerHTML = '';
+
+    const markup = countriesHbs(data);
+    refs.jsMarkup.insertAdjacentHTML('beforeend', markup);
+}
+
+function clearInput() {
+    refs.input.value = '';
+}
+
+refs.form.addEventListener('submit', handlerSubmit);
+
