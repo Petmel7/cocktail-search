@@ -1,12 +1,27 @@
 {{!-- Пошук країн --}}
 
-{{!-- {{#each this}}
-<li>
-    <img src="{{this.coatOfArms}}" 
-    alt="{{this.capital}}">
-    <p>{{this.capital}}</p>
-</li>
-{{/each}} --}}
+{{#each this}}
+<div>
+    <div>{{name.common}}</div>
+    <div>Capital: {{capital}}</div>
+    <div>Population: {{population}}</div>
+    <div>Languages:
+        {{#each languages}}
+            <ul>
+                <li>
+                    {{this}},
+                </li>
+            </ul>
+        {{/each}}
+    </div>
+</div>
+    <div>
+        <img src="{{flags.png}}" 
+        alt="{{name.common}}">
+    </div>
+{{/each}}
+
+
 
 {{!-- Пошук коктейлів --}}
 
@@ -19,70 +34,19 @@
 {{/each}} --}}
 
 
-{{!-- {{#each this}}
-<li>
-    <p>Країна: {{this.name.common}}</p>
-    <p>Столиця: {{this.capital.[0]}}</p>
-</li>
-{{/each}} --}}
 
-
-
-
-
+{{!-- Було --}}
 
 {{!-- {{#each this}}
 <li>
     <h3>{{name.common}}</h3>
-    <p>Capital: {{capital.[0]}}</p>
+    <p>Capital: {{capital}}</p>
     <p>Population: {{population}}</p>
     <p>Languages:
         {{#each languages}}
         {{this}},
         {{/each}}
     </p>
-    <img src="{{flags.svg}}" alt="Flag of {{name.common}}">
+    <img src="{{flags.png}}" alt="{{name.common}}">
 </li>
 {{/each}} --}}
-
-
-
-
-{{!-- {{#each this}}
-<li style="background-image: url('{{flags.svg}}');">
-    <h3>{{name.common}}</h3>
-    <p>Capital: {{capital.[0]}}</p>
-    <p>Population: {{population}}</p>
-    <p>Languages:
-        {{#each languages}}
-        {{this}},
-        {{/each}}
-    </p>
-</li>
-{{/each}} --}}
-
-
-
-{{!-- {{#each this}}
-<li>
-    <h3>{{name.common}}</h3>
-    <p>Capital: {{capital.[0]}}</p>
-    <p>Population: {{population}}</p>
-    <p>Languages: {{#each languages}}{{this}}, {{/each}}</p>
-    <img src="{{flags.png}}" alt="Flag">
-</li>
-{{/each}} --}}
-
-{{#each this}}
-<li>
-    <h3>{{name.common}}</h3>
-    <p>Capital: {{capital.[0]}}</p>
-    <p>Population: {{population}}</p>
-    <p>Languages:
-        {{#each languages}}
-        {{this}},
-        {{/each}}
-    </p>
-    <img src="{{flags.png}}" alt="Flag">
-</li>
-{{/each}}
