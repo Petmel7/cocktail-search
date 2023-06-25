@@ -36,6 +36,10 @@ function clearInput() {
     refs.input.value = '';
 }
 
+// const debounceHandlerSubmit = debounce(handlerSubmit, 5000);
+
+// refs.input.addEventListener('input', debounceHandlerSubmit);
+
 refs.form.addEventListener('submit', handlerSubmit);
 
 // !Пошук коктейлів

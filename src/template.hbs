@@ -1,20 +1,22 @@
 {{!-- Пошук країн --}}
 
 {{#each this}}
-<div>
-    <div>{{name.common}}</div>
-    <div>Capital: {{capital}}</div>
-    <div>Population: {{population}}</div>
-    <div>Languages:
-        {{#each languages}}
-            <ul>
+<h1 class="name">{{name.common}}</h1>
+
+<div class="info">
+    {{!-- <h1 class="name">{{name.common}}</h1> --}}
+    <div class="font-size">Capital: {{capital}}</div>
+    <div class="font-size">Population: {{population}}</div>
+    <div class="font-size">Languages:
+        <ul class="languages">
+            {{#each languages}}
                 <li>
                     {{this}},
                 </li>
-            </ul>
-        {{/each}}
+            {{/each}}
+        </ul>
     </div>
-</div>
+
     <div>
         <img src="{{flags.png}}" 
         alt="{{name.common}}">
